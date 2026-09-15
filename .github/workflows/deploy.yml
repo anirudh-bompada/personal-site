@@ -17,9 +17,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      DEPLOY_SITE: https://anirudh-bompada.github.io
-      DEPLOY_BASE: /personal-site
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7

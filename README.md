@@ -7,8 +7,8 @@ work, cloud-platform experience, technical projects, and local-AI experiments.
 
 ## Live site
 
-- **Current preview:** [anirudh-bompada.github.io/personal-site](https://anirudh-bompada.github.io/personal-site/)
-- **Production domain:** `anirudhbompada.com` — custom-domain setup is the next deployment phase
+- **Production domain:** [anirudhbompada.com](https://anirudhbompada.com/) — DNS and HTTPS cutover in progress
+- **Former preview:** `anirudh-bompada.github.io/personal-site` (may redirect to the production domain after the Pages domain setting is saved)
 
 ## What is included
 
@@ -103,16 +103,17 @@ The workflow also supports manual runs from the repository's **Actions** tab.
 
 ### Deployment paths
 
-`astro.config.mjs` supports both the current GitHub Pages project URL and the
-future custom domain:
+`astro.config.mjs` supports both the former GitHub Pages project URL and the
+custom domain:
 
 | Target | `DEPLOY_SITE` | `DEPLOY_BASE` |
 | --- | --- | --- |
 | GitHub Pages preview | `https://anirudh-bompada.github.io` | `/personal-site` |
 | Custom domain | `https://anirudhbompada.com` | Unset |
 
-The workflow currently supplies the preview values. This keeps all navigation,
-styles, metadata, and static assets working beneath `/personal-site/`.
+The workflow uses the custom-domain defaults, so navigation, styles, metadata,
+and static assets are built for the domain root. For a temporary local build of
+the old project URL, set both preview environment variables shown above.
 
 ## Custom-domain transition
 
@@ -123,11 +124,11 @@ record in place. The cutover is separate from the initial Pages deployment:
    confirm the domain-root URLs, navigation, and assets.
 2. Configure `anirudhbompada.com` under this repository's GitHub Pages
    **Custom domain** setting, before pointing the domain's DNS to GitHub.
-3. Replace the Porkbun parking records with the GitHub Pages apex records and
+3. Remove the preview-only `DEPLOY_SITE` and `DEPLOY_BASE` values from the
+   workflow and redeploy the already-tested domain-root build.
+4. Replace the Porkbun parking records with the GitHub Pages apex records and
    point `www` directly to `anirudh-bompada.github.io`. Keep email-forwarding,
    the verification TXT record, and DNSSEC unchanged.
-4. Remove the preview-only `DEPLOY_SITE` and `DEPLOY_BASE` values from the
-   workflow and redeploy the already-tested domain-root build.
 5. Verify DNS, HTTPS, apex and `www` routing, all routes and assets; enable
    **Enforce HTTPS** once GitHub makes it available.
 
@@ -135,8 +136,7 @@ GitHub Pages uses a custom GitHub Actions publishing workflow for this project.
 The custom domain is set in Pages settings: a `public/CNAME` file is not
 required for this publishing mode and would be ignored by GitHub Pages.
 
-Until that cutover is complete, the GitHub Pages preview remains the verified
-deployment target.
+During DNS propagation, some networks may still resolve the old parking records.
 
 ## Content status
 
