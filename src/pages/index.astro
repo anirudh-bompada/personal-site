@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const pageUrl = (path) => `${base}${path}`;
 ---
 
 <BaseLayout>
@@ -12,8 +15,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         explore practical local AI through hands-on benchmarking.
       </p>
       <div class="button-row">
-        <a class="button" href="/projects">Explore my work</a>
-        <a class="button secondary" href="/about">More about me</a>
+        <a class="button" href={pageUrl('projects')}>Explore my work</a>
+        <a class="button secondary" href={pageUrl('about')}>More about me</a>
       </div>
     </div>
 
@@ -102,7 +105,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           A growing collection of experiments, reusable tools, and technical notes grounded in
           my own testing.
         </p>
-        <a class="text-link" href="/projects">View all projects</a>
+        <a class="text-link" href={pageUrl('projects')}>View all projects</a>
       </div>
     </div>
 

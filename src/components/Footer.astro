@@ -1,9 +1,14 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const contactUrl = `${base}contact`;
+---
+
 <footer class="site-footer">
   <p>Built with curiosity, measured with data.</p>
   <div class="footer-links">
     <a href="https://github.com/anirudh-bompada" target="_blank" rel="noreferrer">
       GitHub<span class="sr-only"> (opens in a new tab)</span>
     </a>
-    <a href="/contact">Contact</a>
+    <a href={contactUrl}>Contact</a>
   </div>
 </footer>

@@ -1,20 +1,27 @@
 ---
 const pathname = Astro.url.pathname;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const pageUrl = (path = '') => `${base}${path.replace(/^\/+/, '')}`;
 
 const links = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/contact', label: 'Contact' },
+  { href: pageUrl(), label: 'Home' },
+  { href: pageUrl('about'), label: 'About' },
+  { href: pageUrl('projects'), label: 'Projects' },
+  { href: pageUrl('blog'), label: 'Blog' },
+  { href: pageUrl('contact'), label: 'Contact' },
 ];
 
-const isActive = (href) =>
-  href === '/' ? pathname === '/' : pathname.startsWith(href);
+const normalizedPathname = pathname.replace(/\/+$/, '') || '/';
+const isActive = (href) => {
+  const normalizedHref = href.replace(/\/+$/, '') || '/';
+  return normalizedHref === (base.replace(/\/+$/, '') || '/')
+    ? normalizedPathname === normalizedHref
+    : normalizedPathname === normalizedHref || normalizedPathname.startsWith(`${normalizedHref}/`);
+};
 ---
 
 <header class="site-header">
-  <a class="wordmark" href="/" aria-label="Anirudh Bompada — home">
+  <a class="wordmark" href={pageUrl()} aria-label="Anirudh Bompada — home">
     <span class="wordmark-mark" aria-hidden="true">AB</span>
     <span class="wordmark-name">Anirudh Bompada</span>
   </a>
