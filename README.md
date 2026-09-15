@@ -116,14 +116,24 @@ styles, metadata, and static assets working beneath `/personal-site/`.
 
 ## Custom-domain transition
 
-The custom-domain cutover is intentionally separate from the initial Pages
-deployment. After DNS records are prepared and verified, the transition will:
+The domain is verified in the GitHub account with a DNS TXT record. Keep that
+record in place. The cutover is separate from the initial Pages deployment:
 
-1. Add `public/CNAME` containing `anirudhbompada.com`.
-2. Remove the preview-only deployment variables from the workflow.
-3. Configure `anirudhbompada.com` in GitHub Pages.
-4. Verify DNS resolution and GitHub's HTTPS certificate.
-5. Confirm every route and asset on the production domain.
+1. Test a local production build with `DEPLOY_SITE` and `DEPLOY_BASE` unset to
+   confirm the domain-root URLs, navigation, and assets.
+2. Configure `anirudhbompada.com` under this repository's GitHub Pages
+   **Custom domain** setting, before pointing the domain's DNS to GitHub.
+3. Replace the Porkbun parking records with the GitHub Pages apex records and
+   point `www` directly to `anirudh-bompada.github.io`. Keep email-forwarding,
+   the verification TXT record, and DNSSEC unchanged.
+4. Remove the preview-only `DEPLOY_SITE` and `DEPLOY_BASE` values from the
+   workflow and redeploy the already-tested domain-root build.
+5. Verify DNS, HTTPS, apex and `www` routing, all routes and assets; enable
+   **Enforce HTTPS** once GitHub makes it available.
+
+GitHub Pages uses a custom GitHub Actions publishing workflow for this project.
+The custom domain is set in Pages settings: a `public/CNAME` file is not
+required for this publishing mode and would be ignored by GitHub Pages.
 
 Until that cutover is complete, the GitHub Pages preview remains the verified
 deployment target.
