@@ -1,18 +1,39 @@
-# Dependencies and generated output
+# Dependencies
 node_modules/
+
+# Generated output and build caches
 dist/
 .astro/
+.cache/
+coverage/
+*.tsbuildinfo
 
 # Local environment files
 .env
 .env.*
 !.env.example
 
-# Editor and operating-system files
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
+# Package-manager and application logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# Local Sites runtime
+# Editors and local workspace settings
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+
+# Operating-system files
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+Desktop.ini
+
+# Local development tools
 .sites-runtime/
