@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const projects = [
+  {
+    number: '01',
+    name: 'Local LLM Benchmark Lab',
+    description:
+      'A reusable Windows PowerShell benchmark for llama.cpp. It captures model throughput, timing, GPU and VRAM behavior, CPU load, RAM use, and structured CSV results across repeatable tests.',
+    status: 'In progress',
+    tags: ['PowerShell', 'llama.cpp', 'CUDA', 'GGUF'],
+  },
+  {
+    number: '02',
+    name: 'Home Server Architecture',
+    description:
+      'A power-conscious home-server design for redundant storage, virtual machines, secure remote access, and room for a moderate GPU as the lab grows.',
+    status: 'Designing',
+    tags: ['Storage', 'Virtualization', 'Networking', 'Hardware'],
+  },
+  {
+    number: '03',
+    name: 'Data Engineering Notes',
+    description:
+      'A developing set of explanations and reusable patterns covering Databricks, PySpark, Azure, Microsoft Fabric, and the architecture decisions behind dependable data workflows.',
+    status: 'Ongoing',
+    tags: ['Databricks', 'PySpark', 'Azure', 'Fabric'],
+  },
+];
+---
+
+<BaseLayout
+  title="Projects — Anirudh Bompada"
+  description="Projects and technical experiments by data engineer Anirudh Bompada."
+>
+  <section class="page-hero">
+    <p class="eyebrow">Projects</p>
+    <h1>Experiments with <span class="accent">evidence.</span></h1>
+    <p class="page-intro">
+      These projects are part build log, part learning system: practical work with enough
+      measurement and documentation to make the results useful again.
+    </p>
+  </section>
+
+  <section class="project-list" aria-label="Project list">
+    {projects.map((project) => (
+      <article class="project-row">
+        <p class="card-index">{project.number}</p>
+        <div>
+          <h2>{project.name}</h2>
+          <p>{project.description}</p>
+          <ul class="tag-list" aria-label={`${project.name} technologies`}>
+            {project.tags.map((tag) => <li class="tag">{tag}</li>)}
+          </ul>
+        </div>
+        <div class="project-meta">
+          <p class="meta-label">Current state</p>
+          <span class="status">{project.status}</span>
+        </div>
+      </article>
+    ))}
+  </section>
+</BaseLayout>

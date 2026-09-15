@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout>
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Data engineer · systems builder</p>
+      <h1>Turning complex data into <span class="accent">clear systems.</span></h1>
+      <p class="hero-lede">
+        I’m Anirudh Bompada. I work with Databricks, PySpark, Azure, and Microsoft Fabric—and
+        explore practical local AI through hands-on benchmarking.
+      </p>
+      <div class="button-row">
+        <a class="button" href="/projects">Explore my work</a>
+        <a class="button secondary" href="/about">More about me</a>
+      </div>
+    </div>
+
+    <aside class="signal-panel" aria-label="Current technical focus">
+      <div class="signal-header">
+        <span>Current focus</span>
+        <span class="signal-status">Active</span>
+      </div>
+      <div class="signal-body">
+        <div class="signal-line">
+          <span class="signal-key">01 / platform</span>
+          <span class="signal-value">Databricks</span>
+        </div>
+        <div class="signal-line">
+          <span class="signal-key">02 / language</span>
+          <span class="signal-value">PySpark</span>
+        </div>
+        <div class="signal-line">
+          <span class="signal-key">03 / cloud</span>
+          <span class="signal-value">Azure</span>
+        </div>
+        <div class="signal-line">
+          <span class="signal-key">04 / lab</span>
+          <span class="signal-value amber">Local AI</span>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">What I work on</p>
+        <h2>From pipelines to inference.</h2>
+      </div>
+      <p>
+        My work sits where data platforms, cloud engineering, and practical experimentation
+        meet. I care about understanding how systems behave—not just whether they run.
+      </p>
+    </div>
+
+    <div class="card-grid">
+      <article class="card">
+        <p class="card-index">01 / Data</p>
+        <h3>Data engineering</h3>
+        <p>Designing and improving ETL workflows with Databricks, PySpark, and scalable data-platform patterns.</p>
+        <ul class="tag-list" aria-label="Data engineering technologies">
+          <li class="tag">Databricks</li>
+          <li class="tag">PySpark</li>
+          <li class="tag">ETL</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <p class="card-index">02 / Cloud</p>
+        <h3>Cloud systems</h3>
+        <p>Working across Azure services and Microsoft Fabric with an emphasis on dependable, understandable architecture.</p>
+        <ul class="tag-list" aria-label="Cloud technologies">
+          <li class="tag">Azure</li>
+          <li class="tag">Fabric</li>
+          <li class="tag">OneLake</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <p class="card-index">03 / Lab</p>
+        <h3>Local AI</h3>
+        <p>Benchmarking open models with llama.cpp to understand speed, memory use, offloading, and real hardware limits.</p>
+        <ul class="tag-list" aria-label="Local AI technologies">
+          <li class="tag">llama.cpp</li>
+          <li class="tag">GGUF</li>
+          <li class="tag">CUDA</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Selected work</p>
+        <h2>Built by measuring.</h2>
+      </div>
+      <div>
+        <p>
+          A growing collection of experiments, reusable tools, and technical notes grounded in
+          my own testing.
+        </p>
+        <a class="text-link" href="/projects">View all projects</a>
+      </div>
+    </div>
+
+    <div class="card-grid">
+      <article class="card">
+        <p class="card-index">Benchmarking</p>
+        <h3>Local LLM Benchmark Lab</h3>
+        <p>A reusable PowerShell benchmark for comparing GGUF models and llama.cpp configurations on Windows hardware.</p>
+      </article>
+
+      <article class="card">
+        <p class="card-index">Infrastructure</p>
+        <h3>Home Server Architecture</h3>
+        <p>An evolving design for efficient storage, virtualization, remote access, and future GPU expansion.</p>
+      </article>
+
+      <article class="card">
+        <p class="card-index">Knowledge</p>
+        <h3>Engineering Notes</h3>
+        <p>Clear explanations and reusable guidance on data engineering, cloud platforms, and hands-on systems work.</p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
