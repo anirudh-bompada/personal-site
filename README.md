@@ -17,13 +17,17 @@ GitHub Pages serves the site over HTTPS, redirects HTTP to HTTPS, and redirects
 
 The site contains seven statically generated pages:
 
-- **Home** — overview of my technical focus and selected work
-- **About** — background, working style, and areas of interest
-- **Career** — technical career focus without employers or private details
-- **Projects** — current engineering projects and experiments
+- **Home** — overview of my technical focus and one featured, active experiment
+- **About** — how I approach technical problems and document tradeoffs
+- **Career** — professional data-engineering focus without employers or private details
+- **Projects** — an active benchmark and a clearly labeled design exploration
 - **LLM Benchmark Lab** — independent testing methodology under Projects
-- **Blog** — publication-ready landing page for future technical notes
-- **Contact** — privacy-first page with no personal contact or profile details
+- **Blog** — reserved landing page for future technical notes; not in the main navigation yet
+- **Contact** — privacy-first page with no personal contact or profile details; not in the main navigation yet
+
+The primary navigation links to Home, About, Career, and Projects. The Blog
+and Contact URLs remain available; they can return to navigation when there is
+an article to read or a public contact method I choose to provide.
 
 The interface is responsive, keyboard accessible, and designed without a
 client-side JavaScript framework.

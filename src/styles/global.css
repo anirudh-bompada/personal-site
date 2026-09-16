@@ -381,6 +381,11 @@ h3 {
   transition: border-color 160ms ease, transform 160ms ease;
 }
 
+.featured-card {
+  max-width: 640px;
+  min-height: 0;
+}
+
 .card:hover {
   transform: translateY(-3px);
   border-color: var(--line-strong);
