@@ -7,8 +7,11 @@ work, cloud-platform experience, technical projects, and local-AI experiments.
 
 ## Live site
 
-- **Production domain:** [anirudhbompada.com](https://anirudhbompada.com/) — DNS and HTTPS cutover in progress
-- **Former preview:** `anirudh-bompada.github.io/personal-site` (may redirect to the production domain after the Pages domain setting is saved)
+- **Production domain:** [anirudhbompada.com](https://anirudhbompada.com/)
+- **Source repository:** [anirudh-bompada/personal-site](https://github.com/anirudh-bompada/personal-site)
+
+GitHub Pages serves the site over HTTPS, redirects HTTP to HTTPS, and redirects
+`www.anirudhbompada.com` to the apex domain.
 
 ## What is included
 
@@ -103,40 +106,38 @@ The workflow also supports manual runs from the repository's **Actions** tab.
 
 ### Deployment paths
 
-`astro.config.mjs` supports both the former GitHub Pages project URL and the
-custom domain:
+`astro.config.mjs` defaults to the production domain. Environment variables
+can also configure a project-URL build if the custom domain is ever removed:
 
 | Target | `DEPLOY_SITE` | `DEPLOY_BASE` |
 | --- | --- | --- |
-| GitHub Pages preview | `https://anirudh-bompada.github.io` | `/personal-site` |
-| Custom domain | `https://anirudhbompada.com` | Unset |
+| Production custom domain (default) | `https://anirudhbompada.com` | Unset |
+| Alternative project URL | `https://anirudh-bompada.github.io` | `/personal-site` |
 
-The workflow uses the custom-domain defaults, so navigation, styles, metadata,
-and static assets are built for the domain root. For a temporary local build of
-the old project URL, set both preview environment variables shown above.
+The workflow uses the production defaults, so navigation, styles, metadata, and
+static assets are built for the domain root. The alternative build is not a
+separately hosted preview while the custom domain is active.
 
-## Custom-domain transition
+## Custom domain and HTTPS
 
-The domain is verified in the GitHub account with a DNS TXT record. Keep that
-record in place. The cutover is separate from the initial Pages deployment:
+The custom domain is configured in this repository's **Settings → Pages** and
+verified in the GitHub account by a DNS TXT record. Keep that record in place.
+Porkbun DNS uses:
 
-1. Test a local production build with `DEPLOY_SITE` and `DEPLOY_BASE` unset to
-   confirm the domain-root URLs, navigation, and assets.
-2. Configure `anirudhbompada.com` under this repository's GitHub Pages
-   **Custom domain** setting, before pointing the domain's DNS to GitHub.
-3. Remove the preview-only `DEPLOY_SITE` and `DEPLOY_BASE` values from the
-   workflow and redeploy the already-tested domain-root build.
-4. Replace the Porkbun parking records with the GitHub Pages apex records and
-   point `www` directly to `anirudh-bompada.github.io`. Keep email-forwarding,
-   the verification TXT record, and DNSSEC unchanged.
-5. Verify DNS, HTTPS, apex and `www` routing, all routes and assets; enable
-   **Enforce HTTPS** once GitHub makes it available.
+- An apex `ALIAS` for `anirudhbompada.com` pointing to
+  `anirudh-bompada.github.io`.
+- A dedicated `www` `CNAME` pointing to `anirudh-bompada.github.io`.
+- No wildcard record; email-forwarding MX/SPF records and DNSSEC remain intact.
+
+**Enforce HTTPS** is enabled in the repository's Pages settings. GitHub Pages
+manages the TLS certificate and redirects HTTP visitors to the secure site.
 
 GitHub Pages uses a custom GitHub Actions publishing workflow for this project.
 The custom domain is set in Pages settings: a `public/CNAME` file is not
 required for this publishing mode and would be ignored by GitHub Pages.
 
-During DNS propagation, some networks may still resolve the old parking records.
+If hosting changes later, update the Pages custom-domain setting and DNS in a
+coordinated cutover; avoid pointing DNS at an unclaimed Pages domain.
 
 ## Content status
 
