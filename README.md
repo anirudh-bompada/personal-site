@@ -15,13 +15,15 @@ GitHub Pages serves the site over HTTPS, redirects HTTP to HTTPS, and redirects
 
 ## What is included
 
-The initial release contains five statically generated pages:
+The site contains seven statically generated pages:
 
 - **Home** — overview of my technical focus and selected work
 - **About** — background, working style, and areas of interest
+- **Career** — technical career focus without employers or private details
 - **Projects** — current engineering projects and experiments
+- **LLM Benchmark Lab** — independent testing methodology under Projects
 - **Blog** — publication-ready landing page for future technical notes
-- **Contact** — link to my public GitHub profile
+- **Contact** — privacy-first page with no personal contact or profile details
 
 The interface is responsive, keyboard accessible, and designed without a
 client-side JavaScript framework.
@@ -52,9 +54,12 @@ personal-site/
 │   ├── pages/
 │   │   ├── about.astro
 │   │   ├── blog.astro
+│   │   ├── career.astro
 │   │   ├── contact.astro
 │   │   ├── index.astro
-│   │   └── projects.astro   # File-based website routes
+│   │   ├── projects.astro
+│   │   └── projects/
+│   │       └── llm-benchmark.astro # Detailed personal benchmark route
 │   └── styles/
 │       └── global.css       # Design tokens and responsive site styles
 ├── .gitignore
@@ -141,9 +146,13 @@ coordinated cutover; avoid pointing DNS at an unclaimed Pages domain.
 
 ## Content status
 
-The site structure and first-release content are complete. Project details and
-blog articles will continue to grow as the underlying work is documented for
-public release.
+The career page describes data-engineering experience without naming employers,
+schools, employment dates, or private contact details. The LLM benchmark page
+explains the testing method without identifying hardware or publishing individual
+performance results. The website does not link directly to a personal profile or
+publish an email address or phone number.
+Project details and blog articles will grow as the underlying work is reviewed
+for public release.
 
 ## License
 

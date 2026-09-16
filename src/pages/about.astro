@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const pageUrl = (path) => `${base}${path}`;
 ---
 
 <BaseLayout
@@ -32,6 +35,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         Outside that core work, I explore local AI and hardware performance. My current lab
         work uses llama.cpp on Windows to compare model sizes, quantization, context lengths,
         GPU offloading, throughput, and system resource use.
+      </p>
+
+      <p>
+        <a class="text-link" href={pageUrl('career')}>Read my career history</a>
       </p>
 
       <h2>What guides the work</h2>

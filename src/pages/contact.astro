@@ -1,36 +1,32 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const projectsUrl = `${base}projects`;
 ---
 
 <BaseLayout
   title="Contact — Anirudh Bompada"
-  description="Connect with Anirudh Bompada through GitHub."
+  description="Contact information for Anirudh Bompada's personal site is not publicly listed."
 >
   <section class="page-hero">
     <p class="eyebrow">Contact</p>
-    <h1>Let’s connect through <span class="accent">the work.</span></h1>
+    <h1>Sharing the work, <span class="accent">keeping details private.</span></h1>
     <p class="page-intro">
-      GitHub is currently the best place to follow my public projects and start a technical
-      conversation.
+      This site does not publish personal contact information or a direct contact method.
+      You can explore the public technical work here in the meantime.
     </p>
   </section>
 
   <section class="contact-panel">
     <div>
-      <p class="meta-label">Public profile</p>
-      <h2>anirudh-bompada</h2>
+      <p class="meta-label">Contact status</p>
+      <h2>No contact details listed</h2>
       <p>
-        This site and the projects behind it are being built in public, one measured step at a
-        time.
+        I have chosen not to post an email address, phone number, or profile link here.
+        A public contact option can be added later if I decide to make one available.
       </p>
     </div>
-    <a
-      class="button"
-      href="https://github.com/anirudh-bompada"
-      target="_blank"
-      rel="noreferrer"
-    >
-      Open GitHub<span class="sr-only"> (opens in a new tab)</span>
-    </a>
+    <a class="button" href={projectsUrl}>Explore projects</a>
   </section>
 </BaseLayout>
