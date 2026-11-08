@@ -6,69 +6,104 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   title="Privacy — Anirudh Bompada"
   description="How this personal website uses privacy-conscious, cookie-free analytics."
 >
-  <section class="page-hero">
-    <p class="eyebrow">Privacy</p>
-    <h1>Useful insights. <span class="accent">Minimal tracking.</span></h1>
-    <p class="page-intro">
-      This site uses privacy-conscious analytics to understand which pages are useful,
-      without asking visitors to sign in or providing personalized advertising.
-    </p>
-  </section>
-
-  <section class="content-grid">
-    <aside aria-label="Privacy summary">
-      <p>ANALYTICS / UMAMI CLOUD</p>
-      <p>ANALYTICS COOKIES / NONE</p>
-      <p>UPDATED / NOVEMBER 7, 2026</p>
-    </aside>
-    <div class="prose">
-      <h2>What the site measures</h2>
-      <p>
-        This website uses <a href="https://umami.is/">Umami Cloud</a> for traffic
-        analytics. It measures pageviews and visits, referring websites, approximate
-        visitor location (such as country), and technical information such as
-        browser, operating system, device type, and screen size.
+  <section class="privacy-page" aria-labelledby="privacy-title">
+    <header class="privacy-header">
+      <h1 id="privacy-title">Privacy</h1>
+      <p class="privacy-updated">Last updated: November 7, 2026</p>
+      <p class="privacy-intro">
+        This personal website uses Umami Cloud to understand site traffic
+        and improve its content without personalized advertising.
       </p>
+    </header>
+
+    <div class="prose privacy-content">
+      <h2>Analytics</h2>
       <p>
-        This site does not ask visitors to create accounts or provide personal
-        contact details, and it does not intentionally attach names, email
-        addresses, or persistent personal identifiers to analytics events.
+        <a href="https://umami.is/">Umami Cloud</a> measures pageviews, visits,
+        referring websites, approximate visitor location (such as country),
+        and basic browser and device details. It does not use analytics cookies.
       </p>
 
-      <h2>How Umami handles analytics</h2>
+      <h2>How information is handled</h2>
       <p>
-        Umami does not use analytics cookies. To estimate visits, it derives an
-        anonymous session identifier from information including the visitor's
-        IP address and browser details, using a salt that rotates periodically.
-        IP addresses are processed to derive approximate location and session
-        information, but are not stored as fields in standard analytics records.
+        Umami processes IP addresses and browser information to estimate visits
+        and approximate locations. Raw IP addresses are not stored as standard
+        analytics fields, though Umami and its infrastructure providers may
+        retain operational or security logs. URL query parameters and fragments
+        are excluded from this site's analytics.
       </p>
       <p>
-        Your browser connects to Umami Cloud to load the analytics script and send
-        events. Umami and its infrastructure providers may separately process or
-        retain IP addresses in operational or security logs. The site excludes
-        URL query parameters and fragments from its Umami tracking.
+        The website is hosted on GitHub Pages, which processes network requests
+        to deliver its pages. No visitor account or personal contact details
+        are required to browse the site.
       </p>
 
       <h2>Your choices</h2>
       <p>
-        The tracker is configured to honor a browser's Do Not Track preference
-        when the browser exposes that signal. Browser privacy extensions may
-        also block analytics. The website remains usable if tracking is blocked.
+        Analytics is configured to honor browser Do Not Track preferences where
+        supported. Privacy extensions may also block tracking. The website
+        remains usable with analytics blocked.
       </p>
 
-      <h2>Retention and provider information</h2>
+      <h2>Retention</h2>
       <p>
-        Analytics retention depends on the Umami Cloud plan. Its free Hobby plan
-        retains production analytics for six months. Separate backup and
-        operational-log retention policies may apply. This site does not sell
-        visitor analytics or use them for targeted advertising.
-      </p>
-      <p>
-        For information about Umami's processing practices, see the
-        <a href="https://umami.is/privacy">Umami Privacy Policy</a>. This notice
-        will be updated if the site's analytics practices or providers change.
+        The current Umami Cloud Hobby plan provides six months of analytics
+        history; operational logs and backups may have different retention.
+        For details about the provider, see the
+        <a href="https://umami.is/privacy">Umami Privacy Policy</a>.
       </p>
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .privacy-page {
+    max-width: 760px;
+    padding: clamp(3rem, 6vw, 5rem) 0 6rem;
+  }
+
+  .privacy-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.75rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .privacy-page h1 {
+    max-width: none;
+    margin-bottom: 0.4rem;
+    font-size: clamp(2.5rem, 5vw, 3.7rem);
+    letter-spacing: -0.05em;
+  }
+
+  .privacy-updated {
+    margin-bottom: 1.25rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .privacy-intro {
+    margin-bottom: 0;
+    color: #c3d0d6;
+    font-size: 1.06rem;
+  }
+
+  .privacy-content h2 {
+    margin: 2rem 0 0.7rem;
+    font-size: clamp(1.4rem, 2.4vw, 1.75rem);
+    letter-spacing: -0.03em;
+  }
+
+  .privacy-content h2:first-child {
+    margin-top: 0;
+  }
+
+  .privacy-content p {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 560px) {
+    .privacy-page {
+      padding: 3rem 0 4rem;
+    }
+  }
+</style>
