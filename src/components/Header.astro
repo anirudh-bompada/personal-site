@@ -11,7 +11,7 @@ const links = [
 ];
 
 const normalizedPathname = pathname.replace(/\/+$/, '') || '/';
-const isActive = (href) => {
+const isActive = (href: string) => {
   const normalizedHref = href.replace(/\/+$/, '') || '/';
   return normalizedHref === (base.replace(/\/+$/, '') || '/')
     ? normalizedPathname === normalizedHref
