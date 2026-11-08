@@ -1,33 +1,90 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
-const projectsUrl = `${base}projects`;
+const contactEmail = 'contact@anirudhbompada.com';
+const contactHref = `mailto:${contactEmail}?subject=Website%20inquiry`;
 ---
 
 <BaseLayout
   title="Contact — Anirudh Bompada"
-  noindex
-  description="Contact information for Anirudh Bompada's personal site is not publicly listed."
+  description="Contact Anirudh Bompada about data engineering, technical projects, and local AI experiments."
 >
-  <section class="page-hero">
-    <p class="eyebrow">Contact</p>
-    <h1>Sharing the work, <span class="accent">keeping details private.</span></h1>
-    <p class="page-intro">
-      This site does not publish personal contact information or a direct contact method.
-      You can explore the public technical work here in the meantime.
-    </p>
-  </section>
+  <section class="contact-page" aria-labelledby="contact-title">
+    <header class="contact-header">
+      <h1 id="contact-title">Contact</h1>
+      <p class="contact-intro">
+        Have a question about my projects, data engineering, or local AI experiments?
+        You're welcome to reach out by email.
+      </p>
+    </header>
 
-  <section class="contact-panel">
-    <div>
-      <p class="meta-label">Contact status</p>
-      <h2>No contact details listed</h2>
-      <p>
-        I have chosen not to post an email address, phone number, or profile link here.
-        A public contact option can be added later if I decide to make one available.
+    <div class="contact-card">
+      <p class="meta-label">Email</p>
+      <p class="contact-address">
+        <a href={contactHref}>{contactEmail}</a>
+      </p>
+      <a class="button" href={contactHref}>Send an email</a>
+      <p class="contact-note">
+        The button opens your email application. If it doesn't open, you can
+        copy the email address above and send your message directly.
       </p>
     </div>
-    <a class="button" href={projectsUrl}>Explore projects</a>
   </section>
 </BaseLayout>
+
+<style>
+  .contact-page {
+    max-width: 760px;
+    padding: clamp(3rem, 6vw, 5rem) 0 6rem;
+  }
+
+  .contact-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.75rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .contact-page h1 {
+    max-width: none;
+    margin-bottom: 1rem;
+    font-size: clamp(2.5rem, 5vw, 3.7rem);
+    letter-spacing: -0.05em;
+  }
+
+  .contact-intro {
+    max-width: 640px;
+    margin-bottom: 0;
+    color: #c3d0d6;
+    font-size: 1.06rem;
+  }
+
+  .contact-card {
+    padding: clamp(1.5rem, 4vw, 2rem);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+
+  .contact-address {
+    margin-bottom: 1.5rem;
+    font-size: clamp(1rem, 2.4vw, 1.35rem);
+    font-weight: 650;
+    overflow-wrap: anywhere;
+  }
+
+  .contact-address a {
+    color: var(--aqua);
+  }
+
+  .contact-note {
+    margin: 1rem 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 560px) {
+    .contact-page {
+      padding: 3rem 0 4rem;
+    }
+  }
+</style>
