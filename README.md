@@ -31,11 +31,6 @@ npm run dev
 Use `npm run check` to validate Astro and TypeScript, and `npm run build`
 to generate the production site.
 
-## Documentation
-
-**[Read the technical guide →](docs/README.md)** for local setup, deployment,
-DNS/HTTPS, analytics, SEO, security, and maintenance.
-
 ## License
 
 No open-source license has been selected for this repository.

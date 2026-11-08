@@ -103,7 +103,7 @@ personal-site/
 
 ### Prerequisites
 
-- Node.js 24 is recommended; Astro requires Node.js 22.12 or newer
+- Node.js 24 is recommended; the currently locked Astro version requires Node.js 22.23.4 or newer
 - npm 11 or a compatible npm version
 
 ### Setup
@@ -194,9 +194,10 @@ coordinated cutover; avoid pointing DNS at an unclaimed Pages domain.
 The career page describes data-engineering experience without naming employers,
 schools, employment dates, or private contact details. The LLM benchmark page
 explains the testing method without identifying hardware or publishing individual
-performance results. The site publishes only the domain-based contact@anirudhbompada.com address
+performance results. The site publishes only the domain-based `contact@anirudhbompada.com` address
 for visitor messages; it does not expose a personal Gmail address, personal
 profile, or phone number. Porkbun forwards inbound mail to a private inbox.
+
 > [!NOTE]
 > Replying from the forwarding inbox can reveal the private sending address
 > unless domain-based outbound email is configured separately.
