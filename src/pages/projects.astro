@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
-const pageUrl = (path) => `${base}${path}`;
+const pageUrl = (path: string) => `${base}${path}`;
 
 const projects = [
   {
