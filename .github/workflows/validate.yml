@@ -19,12 +19,6 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: npm
-      - name: Prepare updated dependency lockfile for this PR
-        run: |
-          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
-          echo 'DEPENDENCY_LOCKFILE_BEGIN'
-          base64 -w0 package-lock.json | fold -w160
-          echo 'DEPENDENCY_LOCKFILE_END'
       - name: Install dependencies from lockfile
         run: npm ci
       - name: Check Astro and TypeScript diagnostics
