@@ -46,9 +46,9 @@ keyboard accessible, and designed without a client-side JavaScript framework.
 ```text
 personal-site/
 ├── .github/
-│   └── workflows/
-│       ├── deploy.yml       # Build and GitHub Pages deployment
-│       └── validate.yml     # Pull request build validation
+│   ├── workflows/
+│   │   ├── deploy.yml       # Build and GitHub Pages deployment
+│   │   └── validate.yml     # Pull request build validation
 │   └── dependabot.yml      # Weekly dependency update checks
 ├── public/
 │   └── favicon.svg          # Static public assets
