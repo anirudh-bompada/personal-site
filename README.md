@@ -7,6 +7,8 @@ projects, and practical local AI experiments.
 
 **Website:** [anirudhbompada.com](https://anirudhbompada.com/)
 
+![Illustrated preview of the site's dark-themed homepage](docs/assets/homepage-preview.svg)
+
 ## About this project
 
 Built with [Astro](https://astro.build/), plain CSS, and GitHub Pages.
