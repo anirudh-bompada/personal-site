@@ -107,6 +107,7 @@ Astro will display the local development URL in the terminal, normally
 | --- | --- |
 | `npm ci` | Install the exact dependency versions in `package-lock.json` |
 | `npm run dev` | Start the local Astro development server |
+| `npm run check` | Check Astro and TypeScript diagnostics |
 | `npm run build` | Generate the production site in `dist/` |
 | `npm run preview` | Preview the most recent production build locally |
 
@@ -192,7 +193,7 @@ for public release.
 - Actions use commit-pinned revisions; Dependabot checks npm dependencies and
   GitHub Actions weekly and proposes changes as pull requests.
 - Pull requests trigger a read-only `Validate website` workflow that runs
-  `npm ci` and `npm run build` before a human merges them.
+  `npm ci`, `npm run check`, and `npm run build` before a human merges them.
 - Review Dependabot update PRs before merging; the automated update checks
   do not install updates automatically or replace the need to inspect alerts.
 - If dependencies are flagged, run `npm audit` locally or in a trusted CI
