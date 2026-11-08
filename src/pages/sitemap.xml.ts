@@ -1,13 +1,14 @@
 import type { APIRoute } from 'astro';
 
 // Curated public pages. Add a route here when new content is ready for indexing.
-// Excludes the unfinished Blog and Contact placeholders.
+// Excludes the unfinished Blog placeholder.
 const indexablePaths = [
   '',
   'about/',
   'career/',
   'projects/',
   'projects/llm-benchmark/',
+  'contact/',
   'privacy/',
 ];
 
