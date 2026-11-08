@@ -29,6 +29,17 @@ const faviconUrl = `${base}favicon.svg`;
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href={faviconUrl} />
     <title>{title}</title>
+    <!-- Cookie-free analytics, restricted to the production domain. -->
+    <script
+      is:inline
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="0cf88742-cb3b-4f31-add9-c10b97eb398b"
+      data-domains="anirudhbompada.com"
+      data-exclude-search="true"
+      data-exclude-hash="true"
+      data-do-not-track="true"
+    ></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
