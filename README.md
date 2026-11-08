@@ -23,14 +23,14 @@ The site contains eight statically generated pages:
 - **Projects** — an active benchmark and a clearly labeled design exploration
 - **LLM Benchmark Lab** — independent testing methodology under Projects
 - **Blog** — reserved landing page for future technical notes; not in the main navigation yet
-- **Contact** — privacy-first page with no personal contact or profile details; not in the main navigation yet
+- **Contact** — public domain-based email link backed by Porkbun forwarding; no personal inbox address or contact form is published
 - **Privacy** — plain-language disclosure of the site's cookie-free Umami analytics
 
 The primary navigation links to Home, About, Career, and Projects. The Blog
-and Contact URLs remain available; they can return to navigation when there is
-an article to read or a public contact method I choose to provide.
+remains a placeholder outside navigation until there is an article to read.
+Contact and Privacy are linked from the site footer.
 
-The Privacy page is linked from the footer on every page. The interface is responsive,
+The interface is responsive,
 keyboard accessible, and designed without a client-side JavaScript framework.
 
 ## Technology
@@ -159,23 +159,26 @@ coordinated cutover; avoid pointing DNS at an unclaimed Pages domain.
 The career page describes data-engineering experience without naming employers,
 schools, employment dates, or private contact details. The LLM benchmark page
 explains the testing method without identifying hardware or publishing individual
-performance results. The website does not link directly to a personal profile or
-publish an email address or phone number.
+performance results. The site publishes only the domain-based contact@anirudhbompada.com address
+for visitor messages; it does not expose a personal Gmail address, personal
+profile, or phone number. Porkbun forwards inbound mail to a private inbox.
+Replying from that inbox may reveal the sender's Gmail address unless outgoing
+domain-based email is separately configured.
 Project details and blog articles will grow as the underlying work is reviewed
 for public release.
 
 ## Search engine discovery
 
 - `/sitemap.xml` is generated at build time from a curated set of published pages:
-  Home, About, Career, Projects, LLM Benchmark Lab, and Privacy.
+  Home, About, Career, Projects, LLM Benchmark Lab, Contact, and Privacy.
 - `/robots.txt` points crawlers to the sitemap and allows pages to be fetched.
-- The empty Blog and Contact placeholders carry `noindex, follow` metadata and
-  are excluded from the sitemap. Keep them crawlable so search engines can read
-  the noindex instruction.
+- The empty Blog placeholder carries `noindex, follow` metadata and is excluded
+  from the sitemap. Keep it crawlable so search engines can read the noindex
+  instruction.
 - Page titles, descriptions, canonical URLs, and Open Graph metadata are emitted
   by the shared Astro layout.
 - **When publishing a new page:** add its route to `indexablePaths` in
-  `src/pages/sitemap.xml.ts`. Remove `noindex` when Blog or Contact is ready.
+  `src/pages/sitemap.xml.ts`. Remove `noindex` when Blog is ready.
 - After deployment, verify `/robots.txt` and `/sitemap.xml`, then add a
   Domain property for `anirudhbompada.com` in Google Search Console.
   Use the TXT record Google supplies through Porkbun; keep existing DNS records.
