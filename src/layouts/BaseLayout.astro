@@ -6,16 +6,19 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  noindex?: boolean;
 }
 
 const {
   title = 'Anirudh Bompada — Data Engineer',
   description = 'Data engineering, cloud systems, and practical local AI experiments by Anirudh Bompada.',
+  noindex = false,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const faviconUrl = `${base}favicon.svg`;
+const sitemapUrl = new URL(`${base}sitemap.xml`, Astro.site);
 ---
 
 <!doctype html>
@@ -26,7 +29,14 @@ const faviconUrl = `${base}favicon.svg`;
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#071019" />
-    <link rel="canonical" href={canonical} />
+    <link rel="canonical" href={canonical.href} />
+    <link rel="sitemap" type="application/xml" href={sitemapUrl.href} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Anirudh Bompada" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical.href} />
     <link rel="icon" type="image/svg+xml" href={faviconUrl} />
     <title>{title}</title>
     <!-- Cookie-free analytics, restricted to the production domain. -->
