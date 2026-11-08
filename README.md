@@ -15,7 +15,7 @@ GitHub Pages serves the site over HTTPS, redirects HTTP to HTTPS, and redirects
 
 ## What is included
 
-The site contains seven statically generated pages:
+The site contains eight statically generated pages:
 
 - **Home** — overview of my technical focus and one featured, active experiment
 - **About** — how I approach technical problems and document tradeoffs
@@ -24,13 +24,14 @@ The site contains seven statically generated pages:
 - **LLM Benchmark Lab** — independent testing methodology under Projects
 - **Blog** — reserved landing page for future technical notes; not in the main navigation yet
 - **Contact** — privacy-first page with no personal contact or profile details; not in the main navigation yet
+- **Privacy** — plain-language disclosure of the site's cookie-free Umami analytics
 
 The primary navigation links to Home, About, Career, and Projects. The Blog
 and Contact URLs remain available; they can return to navigation when there is
 an article to read or a public contact method I choose to provide.
 
-The interface is responsive, keyboard accessible, and designed without a
-client-side JavaScript framework.
+The Privacy page is linked from the footer on every page. The interface is responsive,
+keyboard accessible, and designed without a client-side JavaScript framework.
 
 ## Technology
 
@@ -62,6 +63,7 @@ personal-site/
 │   │   ├── contact.astro
 │   │   ├── index.astro
 │   │   ├── projects.astro
+│   │   ├── privacy.astro
 │   │   └── projects/
 │   │       └── llm-benchmark.astro # Detailed personal benchmark route
 │   └── styles/
@@ -157,6 +159,14 @@ performance results. The website does not link directly to a personal profile or
 publish an email address or phone number.
 Project details and blog articles will grow as the underlying work is reviewed
 for public release.
+
+## Privacy-conscious analytics
+
+Umami Cloud is integrated in `src/layouts/BaseLayout.astro` for production-domain-only,
+cookie-free traffic analytics. URL query parameters and fragments are excluded and the
+tracker honors browser Do Not Track preferences where available. The public disclosure
+is at `/privacy` and linked from the global footer. No Umami API keys are stored in this
+repository; the website ID in the tracker is a public identifier.
 
 ## License
 
