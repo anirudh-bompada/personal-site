@@ -64,6 +64,8 @@ personal-site/
 │   │   ├── index.astro
 │   │   ├── projects.astro
 │   │   ├── privacy.astro
+│   │   ├── robots.txt.ts     # Build-time crawler instructions
+│   │   ├── sitemap.xml.ts   # Curated XML sitemap
 │   │   └── projects/
 │   │       └── llm-benchmark.astro # Detailed personal benchmark route
 │   └── styles/
@@ -159,6 +161,22 @@ performance results. The website does not link directly to a personal profile or
 publish an email address or phone number.
 Project details and blog articles will grow as the underlying work is reviewed
 for public release.
+
+## Search engine discovery
+
+- `/sitemap.xml` is generated at build time from a curated set of published pages:
+  Home, About, Career, Projects, LLM Benchmark Lab, and Privacy.
+- `/robots.txt` points crawlers to the sitemap and allows pages to be fetched.
+- The empty Blog and Contact placeholders carry `noindex, follow` metadata and
+  are excluded from the sitemap. Keep them crawlable so search engines can read
+  the noindex instruction.
+- Page titles, descriptions, canonical URLs, and Open Graph metadata are emitted
+  by the shared Astro layout.
+- **When publishing a new page:** add its route to `indexablePaths` in
+  `src/pages/sitemap.xml.ts`. Remove `noindex` when Blog or Contact is ready.
+- After deployment, verify `/robots.txt` and `/sitemap.xml`, then add a
+  Domain property for `anirudhbompada.com` in Google Search Console.
+  Use the TXT record Google supplies through Porkbun; keep existing DNS records.
 
 ## Privacy-conscious analytics
 
