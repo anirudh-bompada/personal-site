@@ -1,34 +1,40 @@
+<div align="center">
+
 # Anirudh Bompada — Personal Site
+
+**Data Engineer** · Databricks · PySpark · Azure · Local AI
+
+[Visit the website](https://anirudhbompada.com/) · [Technical documentation](docs/README.md)
 
 [![Deploy to GitHub Pages](https://github.com/anirudh-bompada/personal-site/actions/workflows/deploy.yml/badge.svg)](https://github.com/anirudh-bompada/personal-site/actions/workflows/deploy.yml)
 
-A personal portfolio focused on data engineering, cloud systems, technical
-projects, and practical local AI experiments.
+<img src="docs/assets/homepage-preview.svg" alt="Illustrated preview of the dark-themed personal website" width="900">
 
-**Website:** [anirudhbompada.com](https://anirudhbompada.com/)
+</div>
 
-![Illustrated preview of the site's dark-themed homepage](docs/assets/homepage-preview.svg)
+## Overview
 
-## About this project
+A personal portfolio showcasing data engineering, cloud-platform experience,
+technical projects, and practical local AI experiments.
 
-Built with [Astro](https://astro.build/), plain CSS, and GitHub Pages.
-The static site includes career and project pages, an LLM Benchmark Lab,
-a contact page, and a privacy notice.
+| Site | Built with | Hosted on |
+| --- | --- | --- |
+| [anirudhbompada.com](https://anirudhbompada.com/) | [Astro](https://astro.build/) · TypeScript · CSS | GitHub Pages |
 
-## Run locally
+## Quick start
 
 ```bash
 npm ci
 npm run dev
 ```
 
-Run `npm run build` to generate the production site.
+Use `npm run check` to validate Astro and TypeScript, and `npm run build`
+to generate the production site.
 
 ## Documentation
 
-See **[Technical Documentation](docs/README.md)** for setup requirements,
-repository structure, deployments, custom-domain configuration, SEO, analytics,
-security, and maintenance details.
+**[Read the technical guide →](docs/README.md)** for local setup, deployment,
+DNS/HTTPS, analytics, SEO, security, and maintenance.
 
 ## License
 

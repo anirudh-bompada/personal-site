@@ -1,10 +1,18 @@
-# Personal Site — Technical Documentation
+# Personal Site — Technical Guide
 
-[← Back to project overview](../README.md)
+> A reference for building, publishing, and maintaining the [personal website](https://anirudhbompada.com/).
+> [← Back to the short README](../README.md)
 
-Detailed information about the site's structure, local development, deployment,
-custom domain, privacy, security, SEO, and maintenance.
+## Find what you need
 
+| Build & develop | Publish & operate | Content & privacy |
+| --- | --- | --- |
+| [Tech stack](#technology) | [Deployment](#deployment) | [Pages](#what-is-included) |
+| [Repository layout](#repository-structure) | [Domain & HTTPS](#custom-domain-and-https) | [Content guidelines](#content-status) |
+| [Local setup](#local-development) | [Security & maintenance](#repository-security-and-maintenance) | [SEO](#search-engine-discovery) |
+| [Commands](#available-commands) | [Live site](#live-site) | [Analytics](#privacy-conscious-analytics) |
+
+---
 ## Live site
 
 - **Production domain:** [anirudhbompada.com](https://anirudhbompada.com/)
@@ -17,14 +25,16 @@ GitHub Pages serves the site over HTTPS, redirects HTTP to HTTPS, and redirects
 
 The site contains eight statically generated pages:
 
-- **Home** — overview of my technical focus and one featured, active experiment
-- **About** — how I approach technical problems and document tradeoffs
-- **Career** — professional data-engineering focus without employers or private details
-- **Projects** — an active benchmark and a clearly labeled design exploration
-- **LLM Benchmark Lab** — independent testing methodology under Projects
-- **Blog** — reserved landing page for future technical notes; not in the main navigation yet
-- **Contact** — public domain-based email link backed by Porkbun forwarding; no personal inbox address or contact form is published
-- **Privacy** — plain-language disclosure of the site's cookie-free Umami analytics
+| Page | Purpose |
+| --- | --- |
+| **Home** | Technical focus and one featured, active experiment |
+| **About** | Problem-solving approach and documented tradeoffs |
+| **Career** | Data-engineering experience without employers or private details |
+| **Projects** | Active benchmark and clearly labeled design exploration |
+| **LLM Benchmark Lab** | Independent testing methodology under Projects |
+| **Blog** | Placeholder for future technical notes; not in main navigation |
+| **Contact** | Domain-based email forwarding; no personal inbox address or form |
+| **Privacy** | Plain-language disclosure of cookie-free Umami analytics |
 
 The primary navigation links to Home, About, Career, and Projects. The Blog
 remains a placeholder outside navigation until there is an article to read.
@@ -43,10 +53,15 @@ keyboard accessible, and designed without a client-side JavaScript framework.
 
 ## Repository structure
 
+<details>
+<summary><strong>Expand repository file tree</strong></summary>
+
 ```text
 personal-site/
 ├── docs/
-│   └── README.md          # Detailed technical documentation
+│   ├── README.md            # Detailed technical documentation
+│   └── assets/
+│       └── homepage-preview.svg # README preview artwork
 ├── .github/
 │   ├── workflows/
 │   │   ├── deploy.yml       # Build and GitHub Pages deployment
@@ -82,6 +97,8 @@ personal-site/
 └── tsconfig.json            # Astro TypeScript configuration
 ```
 
+</details>
+
 ## Local development
 
 ### Prerequisites
@@ -113,6 +130,18 @@ Astro will display the local development URL in the terminal, normally
 
 ## Deployment
 
+Pull requests must pass the `Validate website` check before merging into `main`.
+After a merge, GitHub Actions builds and publishes the static site:
+
+```mermaid
+flowchart LR
+    PR["Pull request"] --> CI["Validate website"]
+    CI --> MAIN["Merge to main"]
+    MAIN --> BUILD["Astro build"]
+    BUILD --> PAGES["GitHub Pages"]
+    PAGES --> DOMAIN["Custom domain"]
+```
+
 Every push to `main` triggers `.github/workflows/deploy.yml`. The workflow:
 
 1. Checks out the repository.
@@ -137,6 +166,9 @@ static assets are built for the domain root. The alternative build is not a
 separately hosted preview while the custom domain is active.
 
 ## Custom domain and HTTPS
+
+> [!IMPORTANT]
+> Keep the GitHub domain-verification TXT record and Porkbun email/DNSSEC records intact when changing DNS.
 
 The custom domain is configured in this repository's **Settings → Pages** and
 verified in the GitHub account by a DNS TXT record. Keep that record in place.
@@ -165,8 +197,10 @@ explains the testing method without identifying hardware or publishing individua
 performance results. The site publishes only the domain-based contact@anirudhbompada.com address
 for visitor messages; it does not expose a personal Gmail address, personal
 profile, or phone number. Porkbun forwards inbound mail to a private inbox.
-Replying from that inbox may reveal the sender's Gmail address unless outgoing
-domain-based email is separately configured.
+> [!NOTE]
+> Replying from the forwarding inbox can reveal the private sending address
+> unless domain-based outbound email is configured separately.
+
 Project details and blog articles will grow as the underlying work is reviewed
 for public release.
 
@@ -192,6 +226,8 @@ for public release.
   repository read access and only the Pages deploy job can publish a site.
 - Actions use commit-pinned revisions; Dependabot checks npm dependencies and
   GitHub Actions weekly and proposes changes as pull requests.
+- `main` requires pull requests and the successful `build` status check;
+  force-pushes and deletion are blocked.
 - Pull requests trigger a read-only `Validate website` workflow that runs
   `npm ci`, `npm run check`, and `npm run build` before a human merges them.
 - Review Dependabot update PRs before merging; the automated update checks
