@@ -47,7 +47,9 @@ keyboard accessible, and designed without a client-side JavaScript framework.
 personal-site/
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml       # Build and GitHub Pages deployment
+│       ├── deploy.yml       # Build and GitHub Pages deployment
+│       └── validate.yml     # Pull request build validation
+│   └── dependabot.yml      # Weekly dependency update checks
 ├── public/
 │   └── favicon.svg          # Static public assets
 ├── src/
@@ -177,6 +179,24 @@ for public release.
 - After deployment, verify `/robots.txt` and `/sitemap.xml`, then add a
   Domain property for `anirudhbompada.com` in Google Search Console.
   Use the TXT record Google supplies through Porkbun; keep existing DNS records.
+
+## Repository security and maintenance
+
+- GitHub Actions uses minimal job-specific token permissions: the build job has
+  repository read access and only the Pages deploy job can publish a site.
+- Actions use commit-pinned revisions; Dependabot checks npm dependencies and
+  GitHub Actions weekly and proposes changes as pull requests.
+- Pull requests trigger a read-only `Validate website` workflow that runs
+  `npm ci` and `npm run build` before a human merges them.
+- Review Dependabot update PRs before merging; the automated update checks
+  do not install updates automatically or replace the need to inspect alerts.
+- If dependencies are flagged, run `npm audit` locally or in a trusted CI
+  environment, update the lockfile using npm, and verify the site still builds.
+- Do not commit access tokens, account credentials, environment files, or
+  private contact details. The Umami website ID is a public tracking ID.
+- GitHub Pages HTTPS and domain ownership verification are configured in
+  account settings; inspect these periodically because they are not controlled
+  by source files.
 
 ## Privacy-conscious analytics
 
