@@ -21,16 +21,6 @@ technical projects, and practical local AI experiments.
 | --- | --- | --- |
 | [anirudhbompada.com](https://anirudhbompada.com/) | [Astro](https://astro.build/) · TypeScript · CSS | GitHub Pages |
 
-## Quick start
-
-```bash
-npm ci
-npm run dev
-```
-
-Use `npm run check` to validate Astro and TypeScript, and `npm run build`
-to generate the production site.
-
 ## License
 
 No open-source license has been selected for this repository.
